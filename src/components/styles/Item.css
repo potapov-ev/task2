@@ -1,0 +1,38 @@
+.item{
+  float: left;
+  margin: 10px;
+  margin-left: 20px;
+  width: 240px;
+  height: 430px;
+}
+.item__img{
+  height: 320px;
+}
+  .item img{
+    width: 220px;
+    max-height: 320px;
+  }
+.item-info{
+  width: 100%;
+}
+  .item-info > div{
+    width: 100%;
+  }
+    .item-info > div:nth-of-type(1){
+      display: flex;
+      align-items: start;
+    }
+.item-info__model{
+  display: inline-block;
+  width: 60%;
+  margin-right: 10%;
+}
+
+.item-info__category{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 10px;
+  color: gray;
+}
