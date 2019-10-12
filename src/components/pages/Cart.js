@@ -1,20 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import '../styles/Cart.css';
 import ItemInCart from './ItemInCart';
 import {connect} from 'react-redux';
 
 function Cart(props) {
-  //let itemsId = JSON.parse(localStorage.itemsId);
-  /* не получается добиться рендера после удаления
-    элемента из корзины без этого бесконечного цикла */
+  const [needRender, setNeedRender] = useState(false);
+
+  const setRender = function() {
+    setNeedRender(!needRender);
+  }
+
   return (
     <div className="cart">
       <div className="cart-shoppingList">
         <h3 className="cart-shoppingList__title">КОРЗИНА</h3>
-        { props.itemsId.map( (id) =>
+        {
+          props.itemsId.map( (id) =>
             <ItemInCart 
-              key = {id}
+              /* если - key = {id}, то при определенной последовательности товаров в корзине после 
+              удаления одного из них все крашится*/
               id = {id}
+              needRender={setRender}
             /> 
           )
         }
@@ -28,7 +34,7 @@ function Cart(props) {
               Промежуточный итог
             </span>
             <span className="formalization__intermediatePrice">
-             xdsd
+              {localStorage.price || 0}
             </span>
           </div>
           <div>
@@ -41,7 +47,9 @@ function Cart(props) {
             <span className="cart-formalization__info">
               ВСЕГО
             </span>
-            <span className="formalization__total_price"></span>
+            <span className="formalization__total_price">
+              {localStorage.price ? parseFloat(localStorage.price) + 350 : 350}
+            </span>
           </div>
           <button>
             ОФОРМИТЬ ЗАКАЗ БЕЗ РЕГИСТРАЦИИ

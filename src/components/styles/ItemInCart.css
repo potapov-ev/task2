@@ -32,3 +32,15 @@
   .cart-shoppingList-item-info > div{
     margin-top: 10px;
   }
+.cart-shoppingList-item-info-btns{
+  display: flex;
+}
+.cart-shoppingList-item__delete{
+  width: 70%;
+}
+.cart-shoppingList-item-number{
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: 58%;
+}

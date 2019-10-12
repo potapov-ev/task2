@@ -92,6 +92,10 @@ const initialState = {
   itemsId: [], // id товаров в корзине
 };
 
+if (!localStorage.itemsId) {
+  localStorage.itemsId = JSON.stringify([]);
+}
+
 function Reducer(state = initialState, action) {
   // eslint-disable-next-line eqeqeq
   if (action.type == 'ITEMS') {
@@ -105,14 +109,13 @@ function Reducer(state = initialState, action) {
   // eslint-disable-next-line eqeqeq
   if (action.type == 'DELETE_ITEM_FROM_CART') {
     let index = state.itemsId.indexOf(action.value);
-    alert(index);
-    localStorage.itemsId = JSON.stringify([...state.itemsId.slice(0, index),
-      ...state.itemsId.slice(index + 1, state.itemsId.length )]);
-    return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)} );
+    if (index !== -1) {
+      localStorage.itemsId = JSON.stringify([...state.itemsId.slice(0, index),
+        ...state.itemsId.slice(index + 1, state.itemsId.length )]);
+      return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)} );
+    }
   }
-  alert(12);
   return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)});
-
 }
 
 const store = new createStore(Reducer);  

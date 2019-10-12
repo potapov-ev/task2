@@ -27,17 +27,19 @@ function Item(props) {
   const { classes } = props;
 
   const addItem = useCallback ( () => {
-    props.buyItem(props.id)
-     if (!localStorage.itemsId) {
-      localStorage.itemsId = JSON.stringify([]);
-    }/*
-    localStorage.itemsId = JSON.stringify([ */
-    /* if (!localStorage.price) {
-      localStorage.price = 0;
-      localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
+    let temp = JSON.parse(localStorage.itemsId);
+    if (temp.indexOf(props.id) !== -1) { /* Если этот элемент уже в корзине,
+                                    не нужно добовлять его и цену заново */
       return;
     }
-    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);  */
+
+    props.buyItem(props.id)
+
+    if (!localStorage.price) { 
+      localStorage.price = 0;
+    }
+
+    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
   }, [props])
 
   return (

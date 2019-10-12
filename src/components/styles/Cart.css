@@ -1,6 +1,8 @@
 .cart{
   width: 100%;
   display: flex;
+
+  font-family: 'Roboto', sans-serif;
 }
 .cart-shoppingList{
   width: 60%;
@@ -8,8 +10,6 @@
 .cart-shoppingList__title{
   margin-left: 8%; 
 }
-
-
 .cart-formalization{
   margin: 34px 0px;
   margin-left: 2%;  
