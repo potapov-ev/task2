@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
@@ -37,8 +37,7 @@ function ItemInCart(props) {
   let index = getIndex();
   
   const handleDeteleGoods = useCallback( () => {
-    props.deleteItem(props.id);
-    alert(3);
+    props.deleteItem(props.id); 
   }, [props])
 
   return (

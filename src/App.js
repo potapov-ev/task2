@@ -93,7 +93,6 @@ const initialState = {
 };
 
 function Reducer(state = initialState, action) {
-
   // eslint-disable-next-line eqeqeq
   if (action.type == 'ITEMS') {
     return Object.assign({}, state, {items: action.value} );
@@ -101,16 +100,19 @@ function Reducer(state = initialState, action) {
   // eslint-disable-next-line eqeqeq
   if (action.type == 'ITEM_TO_CART') {
     localStorage.itemsId = JSON.stringify([...state.itemsId, action.value]);
-    return Object.assign({}, state, {itemsId: [...state.itemsId, action.value]} );
+    return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)} );
   }
   // eslint-disable-next-line eqeqeq
   if (action.type == 'DELETE_ITEM_FROM_CART') {
     let index = state.itemsId.indexOf(action.value);
+    alert(index);
     localStorage.itemsId = JSON.stringify([...state.itemsId.slice(0, index),
       ...state.itemsId.slice(index + 1, state.itemsId.length )]);
     return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)} );
   }
-  return state;
+  alert(12);
+  return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)});
+
 }
 
 const store = new createStore(Reducer);  

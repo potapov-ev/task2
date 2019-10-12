@@ -1,21 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import '../styles/Cart.css';
 import ItemInCart from './ItemInCart';
+import {connect} from 'react-redux';
 
 function Cart(props) {
-  const [itemsId, setItemsId] = useState([]);
-
+  //let itemsId = JSON.parse(localStorage.itemsId);
   /* не получается добиться рендера после удаления
     элемента из корзины без этого бесконечного цикла */
-  useEffect( () => {
-    setItemsId(JSON.parse(localStorage.itemsId));
-  })
-
   return (
     <div className="cart">
       <div className="cart-shoppingList">
         <h3 className="cart-shoppingList__title">КОРЗИНА</h3>
-        { itemsId.map( (id) =>
+        { props.itemsId.map( (id) =>
             <ItemInCart 
               key = {id}
               id = {id}
@@ -32,7 +28,7 @@ function Cart(props) {
               Промежуточный итог
             </span>
             <span className="formalization__intermediatePrice">
-              {localStorage.price}
+             xdsd
             </span>
           </div>
           <div>
@@ -64,4 +60,9 @@ function Cart(props) {
   )
 }
 
-export default Cart;
+const mapStateToProps = function(state) { 
+  return {
+    itemsId: state.itemsId,
+  }
+}
+export default connect(mapStateToProps)(Cart);

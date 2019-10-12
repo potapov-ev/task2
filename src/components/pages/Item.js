@@ -28,13 +28,16 @@ function Item(props) {
 
   const addItem = useCallback ( () => {
     props.buyItem(props.id)
-
-    if (!localStorage.price) {
+     if (!localStorage.itemsId) {
+      localStorage.itemsId = JSON.stringify([]);
+    }/*
+    localStorage.itemsId = JSON.stringify([ */
+    /* if (!localStorage.price) {
       localStorage.price = 0;
       localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
       return;
     }
-    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
+    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);  */
   }, [props])
 
   return (
