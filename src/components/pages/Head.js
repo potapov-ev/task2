@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
+
 import '../styles/Head.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,7 +14,6 @@ import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
-import CardActions from '@material-ui/core/CardActions';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
@@ -39,9 +39,9 @@ const styles = {
   },
   button: {
     width: "100%",
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10
+    marginTop: 20,
+    marginBottom: 10,
+    backgroundColor: '#1565c0',
   }
 };
 
@@ -57,13 +57,13 @@ function Head(props) {
     setOpen(false);
   };
 
-  const [state, setState] = useState({
+  const [passwordState, setPasswordState] = useState({
     password: "",
     showPassword: true
   })
 
   const handleChange = prop => event => {
-    setState({ [prop]: event.target.value });
+    setPasswordState({ [prop]: event.target.value });
   };
 
   const handleMouseDownPassword = event => {
@@ -71,10 +71,10 @@ function Head(props) {
   };
 
   const handleClickShowPassword = () => {
-    setState({ showPassword: !state.showPassword });
+    setPasswordState({ showPassword: !passwordState.showPassword });
   };
 
-  const { classes }= props;
+  const { classes } = props;
 
   return (
     <header>
@@ -94,13 +94,11 @@ function Head(props) {
           </a>
         </div>
         <Modal
-            className={classesModal.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{ timeout: 500, }}
-          >
+          className={classesModal.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+        >
           <Fade in={open}>
             <div className={classesModal.paper}>
               <TextField
@@ -111,23 +109,21 @@ function Head(props) {
                 margin="normal"
                 required
               />
-              <FormControl
-                className={classes.textField}
-              >
+              <FormControl>
                 <InputLabel htmlFor="adornment-password">Password</InputLabel>
                 <Input
                   id="adornment-password"
-                  type={state.showPassword ? "text" : "password"}
-                  value={state.password}
+                  type={passwordState.showPassword ? "text" : "password"}
+                  value={passwordState.password}
                   onChange={handleChange("password")}
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
-                        aria-label="Toggle password visibility"
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
+                        onBlur={(e) => {e.preventDefault();}}
                       >
-                        {state.showPassword ? (
+                        {passwordState.showPassword ? (
                           <VisibilityOff />
                         ) : (
                           <Visibility />
@@ -138,17 +134,15 @@ function Head(props) {
                   required
                 />
               </FormControl>
-              <CardActions>
-                <Button
-                  variant="raised"
-                  size="large"
-                  type="submit"
-                  color="primary"
-                  className={classes.button}
-                >
-                  Log In
-                </Button>
-              </CardActions>
+              <Button
+                variant="raised"
+                size="large"
+                type="submit"
+                className={classes.button}
+                onClick={handleClose}
+              >
+                Log In
+              </Button>
             </div>
           </Fade>
         </Modal>
@@ -156,15 +150,17 @@ function Head(props) {
           <a href="#">Помощь</a>
         </div>
         <div className="shop">
-          <a href="#"> </a>
+          <Link to="/Cart" href="#"></Link>
         </div>
         <div>
           <a href="#">Россия</a>
         </div>
       </div>
 
-      <div className="header-bottom">
-        <div class="logo"></div>
+      <div className="header-bottom">  
+        <div class="logo">
+          <Link className="goHome" to="/" href="#"></Link>
+        </div>
         <div class="header-bottom-main">
           <div class="men">
             <a href="#">МУЖЧИНЫ</a>

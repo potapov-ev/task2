@@ -1,25 +1,34 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
+
 import '../styles/Item.css';
 
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from '@material-ui/core/styles';
 
-/* import DeleteIcon from "@material-ui/icons/Delete";
- */
 
 const styles = {
   root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    backgroundColor: 'white',
     borderRadius: 3,
-    color: 'white',
+    color: 'black',
     height: 40,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    '&:hover': {
+      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    },
   },
+  
 };
 
 function Item(props) {
   const { classes } = props;
+
+  const addItem = useCallback ( () => {
+    props.buyItem(props.id)
+  }, [props])
 
   return (
     <div className="item">
@@ -33,7 +42,7 @@ function Item(props) {
         </div>
         <div  className="item-info__category">
           <span>{props.category}</span>
-          <Button className={classes.root} onClick={ () => {alert(3)}}>
+          <Button className={classes.root} onClick={addItem}>
             <AddIcon />
           </Button>        
         </div>
@@ -42,4 +51,15 @@ function Item(props) {
   )
 }
  
-export default withStyles(styles)(Item);
+const mapStateToProps = function(state) { }
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps,
+    dispatch => ({
+      buyItem: (item) => {
+        dispatch({ type: 'GOODS', value: item});
+      }
+    })
+  ),
+)(Item);

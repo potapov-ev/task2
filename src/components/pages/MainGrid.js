@@ -7,12 +7,13 @@ function MainGrid(props) {
 
   return (
     <div className="main-grid">
-      { props.items.map( (item, index) =>
+      { props.items.map( (item) =>
         <Item src={item.img}
           model={item.model}
           price={item.price}
           category={item.category} 
-          key={index}>   
+          id={item.id} 
+          key={item.id}>   
         </Item>
       )}
     </div>
