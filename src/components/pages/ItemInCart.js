@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
-import '../styles/Goods.css';
+import '../styles/ItemInCart.css';
 
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -20,24 +20,25 @@ const styles = {
   }
 };
 
-function Goods(props) {
+function ItemInCart(props) {
   const { classes } = props;
 
-  function getSrc()  {
+  function getIndex()  {
     let counter = 0;
 
     props.items.map( (item, index) => {
-      if (item.id == props.id) {
+      if (item.id === props.id) {
         counter = index;
       }
       return item;
     })
     return counter;
   }
-  let index = getSrc();
+  let index = getIndex();
   
   const handleDeteleGoods = useCallback( () => {
     props.deleteItem(props.id);
+    alert(3);
   }, [props])
 
   return (
@@ -78,8 +79,8 @@ export default compose(
   connect(mapStateToProps, 
     dispatch => ({
       deleteItem: (item) => {
-        dispatch({ type: 'deleteGOODS', value: item});
+        dispatch({ type: 'DELETE_ITEM_FROM_CART', value: item});
       }
     })
   )
-)(Goods);
+)(ItemInCart);

@@ -28,6 +28,13 @@ function Item(props) {
 
   const addItem = useCallback ( () => {
     props.buyItem(props.id)
+
+    if (!localStorage.price) {
+      localStorage.price = 0;
+      localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
+      return;
+    }
+    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
   }, [props])
 
   return (
@@ -58,7 +65,7 @@ export default compose(
   connect(mapStateToProps,
     dispatch => ({
       buyItem: (item) => {
-        dispatch({ type: 'GOODS', value: item});
+        dispatch({ type: 'ITEM_TO_CART', value: item});
       }
     })
   ),

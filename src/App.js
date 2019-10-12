@@ -99,14 +99,16 @@ function Reducer(state = initialState, action) {
     return Object.assign({}, state, {items: action.value} );
   }
   // eslint-disable-next-line eqeqeq
-  if (action.type == 'GOODS') {
+  if (action.type == 'ITEM_TO_CART') {
+    localStorage.itemsId = JSON.stringify([...state.itemsId, action.value]);
     return Object.assign({}, state, {itemsId: [...state.itemsId, action.value]} );
   }
   // eslint-disable-next-line eqeqeq
-  if (action.type == 'deleteGOODS') {
+  if (action.type == 'DELETE_ITEM_FROM_CART') {
     let index = state.itemsId.indexOf(action.value);
-    return Object.assign({}, state, {itemsId: [...state.itemsId.slice(0, index),
-       ...state.itemsId.slice(index + 1, state.itemsId.length )]} );
+    localStorage.itemsId = JSON.stringify([...state.itemsId.slice(0, index),
+      ...state.itemsId.slice(index + 1, state.itemsId.length )]);
+    return Object.assign({}, state, {itemsId: JSON.parse(localStorage.itemsId)} );
   }
   return state;
 }

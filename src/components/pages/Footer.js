@@ -4,8 +4,6 @@ import '../styles/Footer.css';
 
 function Footer() {
 
-  
-
   return(
     <footer>
       <div className="footer-top">
