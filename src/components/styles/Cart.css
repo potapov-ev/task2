@@ -27,9 +27,6 @@
 .cart-formalization__info{
   display: inline-block;
   width: 74%;
-}
-.cart-formalization__intermediatePrice{
-  font-size: 20px;
 } 
     .cart-formalization > div:last-of-type{
       margin-top: 30px; 

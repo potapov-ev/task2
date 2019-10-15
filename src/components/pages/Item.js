@@ -32,13 +32,9 @@ function Item(props) {
       return;
     }
 
-    props.buyItem(props.id)
-
-    if (!localStorage.price) { // Временная цена = сумма товаров в корзине
-      localStorage.price = 0;
-    }
-
-    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price);
+    props.buyItem(props.id);
+    props.increaseСost(props.price);
+    /* localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price); */
   }, [props])
 
   return (
@@ -74,7 +70,10 @@ export default compose(
     dispatch => ({
       buyItem: (item) => {
         dispatch({ type: 'ITEM_TO_CART', value: item});
-      }
+      },
+      increaseСost: (price) => {
+        dispatch({ type: 'CHANGE_PRICE', value: price});
+      },
     })
   ),
 )(Item);

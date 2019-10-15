@@ -26,8 +26,8 @@ function App() {
           <Route exact path="/" component={Navigation}/>
           <Route exact path="/" component={MainGrid}/>
           <Route path="/Cart" component={Cart}/>
-          <Footer />
         </BrowserRouter>
+        <Footer />
       </PersistGate>
     </Provider> 
     );

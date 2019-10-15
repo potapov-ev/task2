@@ -31,8 +31,8 @@ function Cart(props) {
             <span className="cart-formalization__info">
               Промежуточный итог
             </span>
-            <span className="formalization__intermediatePrice">
-              {localStorage.price || 0}
+            <span className="cart-formalization__temporaryPrice">
+              {props.temporaryPrice || 0}
             </span>
           </div>
           <div>
@@ -46,7 +46,7 @@ function Cart(props) {
               ВСЕГО
             </span>
             <span className="formalization__total_price">
-              {localStorage.price ? parseFloat(localStorage.price) + 350 : 350}
+              {props.temporaryPrice ? parseFloat(props.temporaryPrice) + 350 : 350}
             </span>
           </div>
           <button>
@@ -69,6 +69,7 @@ function Cart(props) {
 const mapStateToProps = function(state) { 
   return {
     itemsId: state.itemsId,
+    temporaryPrice: state.price,
   }
 }
 export default connect(mapStateToProps)(Cart);

@@ -8,11 +8,13 @@ import items from './constants';
 const initialState = {
   items: items,
   itemsId: [], // id товаров, находящихся в корзине
+  price: 0
 };
 
 const ITEMS = 'ITEMS';
 const ITEM_TO_CART = 'ITEM_TO_CART';
 const DELETE_ITEM_FROM_CART = 'DELETE_ITEM_FROM_CART';
+const CHANGE_PRICE = 'CHANGE_PRICE';
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -27,6 +29,9 @@ function reducer(state = initialState, action) {
       return {...state, itemsId: [...state.itemsId.slice(0, index),
         ...state.itemsId.slice(index + 1, state.itemsId.length )]};
 
+    case CHANGE_PRICE:  
+      return {...state, price: state.price + parseFloat(action.value)};
+        
     default:
       return state;
   }

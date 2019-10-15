@@ -49,15 +49,20 @@ function ItemInCart(props) {
     if (localStorage['number' + props.id] > 1) {
       coef = localStorage['number' + props.id];
     }
-    localStorage.price = parseFloat(localStorage.price) - parseFloat(props.items[index].price) * coef;
+
+    props.changePrice(parseFloat(-props.items[index].price * coef));
     localStorage['number' + props.id] = 1;
+
     props.deleteItem(props.id); 
   }, [props, index]);
 
   function handleNumberIncrease() {
     setNumber(number + 1);
+
     localStorage['number' + props.id] = parseInt(localStorage['number' + props.id]) + 1;
-    localStorage.price = parseFloat(localStorage.price) + parseFloat(props.items[index].price);
+    
+    props.changePrice(parseFloat(props.items[index].price));
+
     props.needRender(); // Вызвать рендер родительского элемента, чтобы отобразилась новая цена
   }
 
@@ -65,7 +70,7 @@ function ItemInCart(props) {
     if(localStorage['number' + props.id] > 1) {
       setNumber(number - 1);
       localStorage['number' + props.id] = localStorage['number' + props.id] - 1;
-      localStorage.price = parseFloat(localStorage.price) - parseFloat(props.items[index].price);
+      props.changePrice(parseFloat(-props.items[index].price));
       props.needRender();
     }
   }
@@ -124,6 +129,9 @@ export default compose(
     dispatch => ({
       deleteItem: (item) => {
         dispatch({ type: 'DELETE_ITEM_FROM_CART', value: item});
+      },
+      changePrice: (price) => {
+        dispatch({ type: 'CHANGE_PRICE', value: price});
       }
     })
   )
