@@ -17,7 +17,8 @@ import Button from "@material-ui/core/Button";
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-const useStyles = makeStyles(theme => ({
+// Стили для всплывающего окна регистрации
+const useStyles = makeStyles(theme => ({ 
   modal: {
     display: 'flex',
     alignItems: 'center',
@@ -33,6 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));  
 
+// Стили для формы регистрации
 const styles = {
   textField: {
     width: "100%"
@@ -47,7 +49,7 @@ const styles = {
 
 function Head(props) {
   const classesModal = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false); // Закрыть, открыть всплывающее окно
 
   const handleOpen = () => {
     setOpen(true);

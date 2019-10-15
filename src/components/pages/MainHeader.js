@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles/MainHeader.css';
 
-function MainHeader(props) {  
+function MainHeader() {  
 
   return (
     <div className="main-header">

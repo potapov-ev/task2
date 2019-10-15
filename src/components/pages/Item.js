@@ -9,7 +9,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from '@material-ui/core/styles';
 
 
-const styles = {
+const styles = { // Стили для кнопки добавления товара в корзину
   root: {
     backgroundColor: 'white',
     borderRadius: 3,
@@ -27,15 +27,14 @@ function Item(props) {
   const { classes } = props;
 
   const addItem = useCallback ( () => {
-    let temp = JSON.parse(localStorage.itemsId);
-    if (temp.indexOf(props.id) !== -1) { /* Если этот элемент уже в корзине,
-                                    не нужно добовлять его и цену заново */
+    if (props.itemsId.indexOf(props.id) !== -1) { /* Если этот элемент уже в корзине,
+                                    не нужно добавлять его заново и увеличивать цену  */
       return;
     }
 
     props.buyItem(props.id)
 
-    if (!localStorage.price) { 
+    if (!localStorage.price) { // Временная цена = сумма товаров в корзине
       localStorage.price = 0;
     }
 
@@ -63,7 +62,11 @@ function Item(props) {
   )
 }
  
-const mapStateToProps = function(state) { }
+const mapStateToProps = (state) => { 
+  return {
+    itemsId: state.itemsId,
+  }
+}
 
 export default compose(
   withStyles(styles),

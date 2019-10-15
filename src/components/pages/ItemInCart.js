@@ -10,7 +10,8 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from '@material-ui/icons/Remove';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+
+const styles = { // Cтили для кнопки удаления из корзины
   root: {
     borderRadius: 3,
     color: 'black',
@@ -20,19 +21,20 @@ const styles = {
   }
 };
 
-
 function ItemInCart(props) {
   const { classes } = props;
-  const [number, setNumber] = useState(0); // Кол-во данного товара
+  const [number, setNumber] = useState(0); 
   
-  if(!localStorage['number' + props.id]) {
+  if(!localStorage['number' + props.id]) { // Кол-во данного товара в корзине
     localStorage['number' + props.id] = 1;
   }
 
+  /* Через пропсы передается только id товара, вся информация о товаре 
+    берется из store, функция ищет индекс товара в store по id */
   function getIndex()  {
     let counter = 0;
 
-    props.items.map( (item, index) => {
+    props.items.map( (item, index) => { 
       if (item.id === props.id) {
         counter = index;
       } 
@@ -56,7 +58,7 @@ function ItemInCart(props) {
     setNumber(number + 1);
     localStorage['number' + props.id] = parseInt(localStorage['number' + props.id]) + 1;
     localStorage.price = parseFloat(localStorage.price) + parseFloat(props.items[index].price);
-    props.needRender();
+    props.needRender(); // Вызвать рендер родительского элемента, чтобы отобразилась новая цена
   }
 
   function handleNumberDecrease() {

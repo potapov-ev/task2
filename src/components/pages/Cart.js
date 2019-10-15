@@ -4,7 +4,7 @@ import ItemInCart from './ItemInCart';
 import {connect} from 'react-redux';
 
 function Cart(props) {
-  const [needRender, setNeedRender] = useState(false);
+  const [needRender, setNeedRender] = useState(false); // Используется в ItemInCart
 
   const setRender = function() {
     setNeedRender(!needRender);
@@ -17,10 +17,8 @@ function Cart(props) {
         {
           props.itemsId.map( (id) =>
             <ItemInCart 
-              /* если - key = {id}, то при определенной последовательности товаров в корзине после 
-              удаления одного из них все крашится*/
               id = {id}
-              needRender={setRender}
+              needRender={setRender} // убрать
             /> 
           )
         }

@@ -8,7 +8,8 @@ function MainGrid(props) {
   return (
     <div className="main-grid">
       { props.items.map( (item) =>
-        <Item src={item.img}
+        <Item 
+          src={item.img}
           model={item.model}
           price={item.price}
           category={item.category} 
