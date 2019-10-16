@@ -1,8 +1,8 @@
-header{
+/* header{
 	width: 100%;
 	
 	font-family: 'Roboto', sans-serif;
-}
+} 
   
   .header-top{
     display: flex;
@@ -42,7 +42,7 @@ header{
 		}
 		  .header-top > div:nth-of-type(2):hover{
 		  	opacity: 1;
-      }
+      }*/
       
 	  .header-top > div:nth-of-type(3){
       width: 9%;

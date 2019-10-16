@@ -1,11 +1,11 @@
-.cart-shoppingList-item{
+/* .cart-shoppingList-item{
   margin-left: 5%;
   margin-bottom: 20px;
   width: 95%;
   height: 210px;
 
   border-bottom: 1px solid lightgray;
-}
+} 
 .cart-shoppingList-item__img{
   width: 18%;
   float: left;
@@ -39,9 +39,9 @@
 .cart-shoppingList-item__delete{
   width: 70%;
 }
-.cart-shoppingList-item-number{
+.cart-shoppingList-item-info-btns__number{
   display: flex;
   align-items: center;
   margin-top: 100px;
   margin-left: 58%;
-}
+}*/

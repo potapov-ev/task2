@@ -2,85 +2,69 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom'
 
+import jordanIcon from '../img/icons/air_jordan_icon.svg';
 import '../styles/Head.css';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Fade from '@material-ui/core/Fade';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import { InputAdornment, InputLabel } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import Button from "@material-ui/core/Button";
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-// Стили для всплывающего окна регистрации
-const useStyles = makeStyles(theme => ({ 
-  modal: {
+
+const useStyles = makeStyles({
+  head: {
+    width: '100%',
+	
+	  fontFamily: 'Roboto, sans-serif',
+  },
+  'header-top': {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '40px',
+
+    textAlign: 'center',
+    
+    borderBottom: '1px solid lightgray',
+    
+    '& > div:nth-of-type(1)': {
+      width: '9%',
+      
+			borderRight: '1px solid lightgray',
+    },
+    '& > div:nth-of-type(2)': {
+      width: '6%',
+      
+ 			backgroundImage: `url(${jordanIcon})`,
+ 	    backgroundSize: '40px 30px',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+
+      opacity: '0.5',
+
+      '&:hover': {
+        opacity: 1,
+      },
+    },
+    '& a': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: '40px',
+      
+      fontSize: '13px',
+		  textDecoration: 'none',
+      color: 'gray',
+      
+      '&:hover': {
+        color: 'black',
+      },
+    },
   },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    height: 200 + 'px',
-    width: 200 + 'px',
-  },
-}));  
+})
 
-// Стили для формы регистрации
-const styles = {
-  textField: {
-    width: "100%"
-  },
-  button: {
-    width: "100%",
-    marginTop: 20,
-    marginBottom: 10,
-    backgroundColor: '#1565c0',
-  }
-};
-
-function Head(props) {
-  const classesModal = useStyles();
-  const [open, setOpen] = React.useState(false); // Закрыть, открыть всплывающее окно
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const [passwordState, setPasswordState] = useState({
-    password: "",
-    showPassword: true
-  })
-
-  const handleChange = prop => event => {
-    setPasswordState({ [prop]: event.target.value });
-  };
-
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
-
-  const handleClickShowPassword = () => {
-    setPasswordState({ showPassword: !passwordState.showPassword });
-  };
-
-  const { classes } = props;
+function Head() {
+  const classes = useStyles();
 
   return (
-    <header>
-      <div className="header-top">
+    <header className={classes.head}>
+      <div className={classes['header-top']}>
         <div>
           <a href="#">NikePlus</a>
         </div>
@@ -91,63 +75,10 @@ function Head(props) {
           <a href="#">Hurley</a>
         </div>		
         <div>
-          <a href="#" onClick={handleOpen} >
+          <a href="#" /* onClick={handleOpen} */ >
             Присоединиться / Войти
           </a>
         </div>
-        <Modal
-          className={classesModal.modal}
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-        >
-          <Fade in={open}>
-            <div className={classesModal.paper}>
-              <TextField
-                id="username-input"
-                label="Username"
-                className={classes.textField}
-                type="text"
-                margin="normal"
-                required
-              />
-              <FormControl>
-                <InputLabel htmlFor="adornment-password">Password</InputLabel>
-                <Input
-                  id="adornment-password"
-                  type={passwordState.showPassword ? "text" : "password"}
-                  value={passwordState.password}
-                  onChange={handleChange("password")}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        onBlur={(e) => {e.preventDefault();}}
-                      >
-                        {passwordState.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )} 
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  required
-                />
-              </FormControl>
-              <Button
-                variant="raised"
-                size="large"
-                type="submit"
-                className={classes.button}
-                onClick={handleClose}
-              >
-                Log In
-              </Button>
-            </div>
-          </Fade>
-        </Modal>
         <div>
           <a href="#">Помощь</a>
         </div>
@@ -194,4 +125,4 @@ function Head(props) {
   )
 }
 
-export default withStyles(styles)(Head);
+export default Head;
