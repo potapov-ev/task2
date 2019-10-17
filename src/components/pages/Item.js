@@ -2,13 +2,55 @@ import React, {useCallback} from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 
-import '../styles/Item.css';
 
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+  item: {
+    float: 'left',
+    margin: '10px',
+    marginLeft: '20px',
+    width: '240px',
+    height: '430px',
 
+    '& .item__img':{
+      height: '320px',
+  
+      '& img': {
+        width: '220px',
+        maxHeight: '320px',
+      },
+    },
+    '& .item_info': {
+      width: '100%',
+
+      '& > div': {
+        width: '100%',
+      },
+      '& > div:nth-of-type(1)': {
+        display: 'flex',
+        alignItems: 'start',
+      },
+    },
+    '& .item-info__model': {
+      display: 'inline-block',
+      width: '60%',
+      marginRight: '10%',
+    },
+    '& .item-info__category': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+
+      marginTop: '10px',
+      color: 'gray',
+    },
+  },
+  
+})
 const styles = { // Стили для кнопки добавления товара в корзину
   root: {
     backgroundColor: 'white',
@@ -25,6 +67,7 @@ const styles = { // Стили для кнопки добавления това
 
 function Item(props) {
   const { classes } = props;
+  const classes1 = useStyles();
 
   const addItem = useCallback ( () => {
     if (props.itemsId.indexOf(props.id) !== -1) { /* Если этот элемент уже в корзине,
@@ -34,11 +77,11 @@ function Item(props) {
 
     props.buyItem(props.id);
     props.increaseСost(props.price);
-    /* localStorage.price = parseFloat(localStorage.price) + parseFloat(props.price); */
+    
   }, [props])
 
   return (
-    <div className="item">
+    <div className={classes1.item}>
       <div className="item__img">
         <img src={props.src} alt=''></img>
       </div>
