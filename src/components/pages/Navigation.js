@@ -1,11 +1,42 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
 import React from 'react';
-import '../styles/Navigation.css';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+	'main-navigation': {
+		float: 'left',
+  	width: '20%',
+
+		fontFamily: 'Roboto, sans-serif', //!! убрать
+		
+		'& > div': {
+			width: '50%',
+			marginLeft: '20%',
+			marginTop: '10px',
+
+			fontSize: '18px',
+		},
+		'& a': {
+			textDecoration: 'none',
+			color: 'black',
+
+			'&:hover': {
+				color: 'gray',
+			},
+		},
+		'& span': {
+			color: 'gray',
+		},
+	},
+})
 
 function Navigation() {
+	const classes = useStyles();
 
 	return (
-		<div class="main-navigation">
+		<div className={classes["main-navigation"]}>
 				<div>
 					<a href="#">Спортивный стиль<span> (228)</span></a>
 				</div>
