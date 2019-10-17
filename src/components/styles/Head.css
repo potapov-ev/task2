@@ -42,7 +42,7 @@
 		}
 		  .header-top > div:nth-of-type(2):hover{
 		  	opacity: 1;
-      }*/
+      }
       
 	  .header-top > div:nth-of-type(3){
       width: 9%;
@@ -132,7 +132,6 @@
 	    .header-bottom-main div:hover{
 		    border-bottom: 2px groove black;
 			}
-			
 
 	.search{
 		width: 18%;
@@ -140,6 +139,7 @@
 		
 		border: 1px solid lightgray;
 	}
+			
 		.search div{
 			position: relative;
 			height: 36px;
@@ -169,4 +169,4 @@
 			background: url(../img/icons/search_icon.svg) no-repeat;
 			background-size: contain;
 			background-position: center;
-		}
+		}*/

@@ -1,4 +1,4 @@
-.main-header{
+/*.main-header{
 	display: flex;
   justify-content: space-between;
   width: 100%;
@@ -24,15 +24,4 @@
   .main-header__category p{
     margin: 0px;
     font-size: 24px;
-  }
-
-/* .main-header__sort{
-  display: flex;
-	align-items: flex-end;
-	margin-right: 3%;
-}
-  .main-header__sort select{
-		border: none;
-		outline: none;
-		font-size: 16px;
-	} */
+  }*/

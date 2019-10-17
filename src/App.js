@@ -12,9 +12,9 @@ import Cart from './components/pages/Cart';
 
 import {store, persistor} from './store';
 
-/* Плохо понял замечания про страницы Footer и Cart, Footer отображается все время,
-для перехода на страницу Cart нужно нажать на иконку корзины. Т к страниц 2, не могу 
-обойтись без роутера */
+/* добавить глобал ко всему */
+
+
 
 function App() {      
   return (
