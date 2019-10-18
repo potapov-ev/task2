@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "img": "a",
+      "model": "Air Jordan 1 Low",
+      "price": "8190",
+      "category": "Обувь",
+      "id": "11"
+    },
+    {
+      "img": "img_2",
+      "model": "Air Jordan 1 Mid",
+      "price": "8190",
+      "category": "Мужская обувь",
+      "id": "12"
+    },
+    {
+      "img": "img_3",
+      "model": "Air Jordan 12 Retro",
+      "price": "15490",
+      "category": "Мужская обувь",
+      "id": "13"
+    },
+    {
+      "img": "img_4",
+      "model": "Air Max Plus",
+      "price": "8190",
+      "category": "Обувь",
+      "id": "14"
+    },
+    {
+      "img": "img_5",
+      "model": "Jordan Mars 270",
+      "price": "12990",
+      "category": "Мужская обувь",
+      "id": "15"
+    },
+    {
+      "img": "img_6",
+      "model": "Nike Air Force 1 High",
+      "price": "8990",
+      "category": "Обувь",
+      "id": "16"
+    },
+    {
+      "img": "img_7",
+      "model": "Nike Air Force 1 LV8 UL",
+      "price": "8990",
+      "category": "Обувь",
+      "id": "17"
+    },
+    {
+      "img": "img_8",
+      "model": "Nike Air Force 1 MID By You",
+      "price": "9990",
+      "category": "Обувь",
+      "id": "18"
+    },
+    {
+      "img": "img_9",
+      "model": "Nike P-6000",
+      "price": "9490",
+      "category": "Обувь",
+      "id": "19"
+    }
+  ]
+}
