@@ -1,8 +1,8 @@
-import {createStore} from 'redux';
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' 
+import {createStore} from "redux";
+import { persistStore, persistReducer } from "redux-persist"
+import storage from "redux-persist/lib/storage" 
 
-import items from './constants';
+import items from "./constants";
 
 const numbers = new Array(items.length) /* каждый элемент массива - кол-во 
                                          определенного  товара в корзине */
@@ -17,11 +17,11 @@ const initialState = {
   numbers: numbers,
 };
 
-const ITEMS = 'ITEMS';
-const ITEM_TO_CART = 'ITEM_TO_CART';
-const DELETE_ITEM_FROM_CART = 'DELETE_ITEM_FROM_CART';
-const CHANGE_PRICE = 'CHANGE_PRICE';
-const CHANGE_NUMBER = 'CHANGE_NUMBER'; // Изменить кол-во товара в корзине
+const ITEMS = "ITEMS";
+const ITEM_TO_CART = "ITEM_TO_CART";
+const DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART";
+const CHANGE_PRICE = "CHANGE_PRICE";
+const CHANGE_NUMBER = "CHANGE_NUMBER"; // Изменить кол-во товара в корзине
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -41,7 +41,7 @@ function reducer(state = initialState, action) {
 
     case CHANGE_NUMBER:  // action.value - индекс
       return {...state, numbers: state.numbers.map( (number, index) => {
-        if (action.value[1] == index) {
+        if (action.value[1] === index) {
           return action.value[0];
         }
         return number;
@@ -53,7 +53,7 @@ function reducer(state = initialState, action) {
 }
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
 }
 

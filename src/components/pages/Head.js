@@ -1,191 +1,187 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import {Link} from "react-router-dom"
 
-import jordanIcon from '../img/icons/air_jordan_icon.svg';
-import shopIcon from '../img/icons/shopping_cart_icon.svg';
-import searchIcon from '../img/icons/search_icon.svg';
-import nikeLogo from '../img/nike_logo.svg';
+import jordanIcon from "../img/icons/air_jordan_icon.svg";
+import shopIcon from "../img/icons/shopping_cart_icon.svg";
+import searchIcon from "../img/icons/search_icon.svg";
+import nikeLogo from "../img/nike_logo.svg";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles({
   head: {
-    width: '100%',
-	
-	  fontFamily: 'Roboto, sans-serif',
+    width: "100%",
   },
-  'header-top': {
-    display: 'flex',
-    height: '40px',
+  "header-top": {
+    display: "flex",
+    height: "40px",
 
-    textAlign: 'center',
+    textAlign: "center",
     
-    borderBottom: '1px solid lightgray',
+    borderBottom: "1px solid lightgray",
     
-    '& .header-top-nikePlus': {
-      width: '9%',
+    "& .header-top-nikePlus": {
+      width: "9%",
       
-			borderRight: '1px solid lightgray',
+			borderRight: "1px solid lightgray",
     },
-    '& .header-top-airJordan': {
-      width: '6%',
+    "& .header-top-airJordan": {
+      width: "6%",
       
  			backgroundImage: `url(${jordanIcon})`,
- 	    backgroundSize: '40px 30px',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
+ 	    backgroundSize: "40px 30px",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
 
-      opacity: '0.5',
+      opacity: "0.5",
 
-      '&:hover': {
+      "&:hover": {
         opacity: 1,
       },
     },
-    '& .header-top-hurley': {
-      width: '9%',
+    "& .header-top-hurley": {
+      width: "9%",
       
-			borderLeft: '1px solid lightgray',
-			borderRight: '1px solid lightgray',
+			borderLeft: "1px solid lightgray",
+			borderRight: "1px solid lightgray",
     },
-    '& .header-top-signIn': {
-      marginLeft: '40%',
+    "& .header-top-signIn": {
+      marginLeft: "40%",
 
-      '&:hover': {
-        borderBottom: '2px groove black',
+      "&:hover": {
+        borderBottom: "2px groove black",
       }
     },
-    '& .header-top-help': {
-      marginLeft: '2%',
+    "& .header-top-help": {
+      marginLeft: "2%",
 
-      '&:hover': {
-        borderBottom: '2px groove black',
+      "&:hover": {
+        borderBottom: "2px groove black",
       },
     },
-    '& .header-top-shop': {
-      width: '2%',
-			marginLeft: '2%',
-      padding: '6px 0px',
+    "& .header-top-shop": {
+      width: "2%",
+			marginLeft: "2%",
+      padding: "6px 0px",
       
       background: `url(${shopIcon}) no-repeat`,
-      backgroundPosition: 'center',
-      backgroundSize: '100% 16px',
+      backgroundPosition: "center",
+      backgroundSize: "100% 16px",
 
       opacity: 0.5,
 
-      '&:hover': {
+      "&:hover": {
         opacity: 1,
-				cursor: 'pointer',
+				cursor: "pointer",
       },
     },
-    '& > .header-top-map': {
-      marginLeft: '2%',
+    "& > .header-top-map": {
+      marginLeft: "2%",
     },
-    '& a': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%',
-      height: '40px',
+    "& a": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "40px",
       
-      fontSize: '13px',
-		  textDecoration: 'none',
-      color: 'gray',
+      fontSize: "13px",
+		  textDecoration: "none",
+      color: "gray",
       
-      '&:hover': {
-        color: 'black',
+      "&:hover": {
+        color: "black",
       },
     },
   },
-  'header-bottom': {
-    display: 'flex',
-		width: '100%',
-		height: '80px',
-		justifyContent: 'space-between',
-    alignItems: 'center',
+  "header-bottom": {
+    display: "flex",
+		width: "100%",
+		height: "80px",
+		justifyContent: "space-between",
+    alignItems: "center",
     
-    borderBottom: '1px solid lightgray',
+    borderBottom: "1px solid lightgray",
     
-    '& .header-bottom-logo': {
-      width: '18%',
-      height: '80px',
-      marginLeft: '1%',
+    "& .header-bottom-logo": {
+      width: "18%",
+      height: "80px",
+      marginLeft: "1%",
       
       backgroundImage: `url(${nikeLogo})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '80px 60%',
-      backgroundPosition: 'left',
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "80px 60%",
+      backgroundPosition: "left",
     },
-    '& .header-bottom-logo__goHome': {
-      display: 'inline-block',
-      height: '80px',
-      width: '100%',
+    "& .header-bottom-logo__goHome": {
+      display: "inline-block",
+      height: "80px",
+      width: "100%",
     },
-    '& .header-bottom-main': {
-      display: 'flex',
-      justifyContent: 'center',
-      width: '60%',
+    "& .header-bottom-main": {
+      display: "flex",
+      justifyContent: "center",
+      width: "60%",
 
-      '& > div': {
-        height: '80px',
-        marginLeft: '2%',
+      "& > div": {
+        height: "80px",
+        marginLeft: "2%",
  
-        boxSizing: 'border-box',
-
-        '&:hover': {
-          borderBottom: '2px groove black',
+        "&:hover": {
+          borderBottom: "2px groove black",
         }
       },
-      '& a': {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: '80px',
+      "& a": {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        height: "80px",
 
-        textDecoration: 'none',
-        fontSize: '18px',
-        fontWeight: '600',
-        letterSpacing: '.15px',
-        color: 'black',
+        textDecoration: "none",
+        fontSize: "18px",
+        fontWeight: "600",
+        letterSpacing: ".15px",
+        color: "black",
       },
     },
-    '& .header-bottom-search': {
-      width: '18%',
-      marginRight: '1%',
+    "& .header-bottom-search": {
+      width: "18%",
+      marginRight: "1%",
   
-      border: '1px solid lightgray',
+      border: "1px solid lightgray",
   
-      '& div': {
-        position: 'relative',
-        height: '36px',
-        width: '100%',
+      "& div": {
+        position: "relative",
+        height: "36px",
+        width: "100%",
       },
-      '& input': {
-        display: 'inline-block',
-        height: '34px',
-        marginLeft: '20%',
-        width: '80%',
+      "& input": {
+        display: "inline-block",
+        height: "34px",
+        marginLeft: "20%",
+        width: "80%",
 
-        outline: 'none',
-        border: 'none',
+        outline: "none",
+        border: "none",
       },
-      '& button': {
-        position: 'absolute',
-        height: '26px',
-        width: '26px',	
-        left: '8px',
-        top: '50%',
+      "& button": {
+        position: "absolute",
+        height: "26px",
+        width: "26px",	
+        left: "8px",
+        top: "50%",
 
-        cursor: 'pointer',
+        cursor: "pointer",
 
-        transform: 'translateY(-50%)',
-        border: 'none',
+        transform: "translateY(-50%)",
+        border: "none",
 
         background: `url(${searchIcon}) no-repeat`,
-        backgroundSize: 'contain',
-        backgroundPosition: 'center',
+        backgroundSize: "contain",
+        backgroundPosition: "center",
       },
     },
   },

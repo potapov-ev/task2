@@ -1,19 +1,17 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
+import {connect} from "react-redux";
 
-import Item from './Item';
+import Item from "./Item";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 
 const useStyles = makeStyles({
-  'main-grid': {
-    float: 'left',
-    width: '75%',
-    marginTop: '20px',
-    marginLeft: '1%',
-
-    fontFamily: 'Roboto, sans-serif',
+  "main-grid": {
+    float: "left",
+    width: "75%",
+    marginTop: "20px",
+    marginLeft: "1%",
   }
 })
 

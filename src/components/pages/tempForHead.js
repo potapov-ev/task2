@@ -1,36 +1,36 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import React, { useState } from "react";
+import {Link} from "react-router-dom"
 
-import '../styles/Head.css';
+import "../styles/Head.css";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Fade from '@material-ui/core/Fade';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import { InputAdornment, InputLabel } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Fade from "@material-ui/core/Fade";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import { InputAdornment, InputLabel } from "@material-ui/core";
+import Input from "@material-ui/core/Input";
+import IconButton from "@material-ui/core/IconButton";
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 // Стили для всплывающего окна регистрации
 const useStyles = makeStyles(theme => ({ 
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    height: 200 + 'px',
-    width: 200 + 'px',
+    height: 200 + "px",
+    width: 200 + "px",
   },
 }));  
 
@@ -43,7 +43,7 @@ const styles = {
     width: "100%",
     marginTop: 20,
     marginBottom: 10,
-    backgroundColor: '#1565c0',
+    backgroundColor: "#1565c0",
   }
 };
 
