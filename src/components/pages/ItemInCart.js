@@ -97,14 +97,12 @@ function ItemInCart(props) {
   function handleNumberIncrease() {
     props.changeNumber(props.numbers[index] + 1, index);
     props.changePrice(parseFloat(props.items[index].price));
-    props.needRender(); // Вызвать рендер родительского элемента, чтобы отобразилась новая цена
   }
 
   function handleNumberDecrease() {
     if(props.numbers[index] > 1) {
       props.changeNumber(props.numbers[index] - 1, index);
       props.changePrice(parseFloat(-props.items[index].price));
-      props.needRender();
     }
   }
 

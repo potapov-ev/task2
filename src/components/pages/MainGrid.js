@@ -17,15 +17,22 @@ const useStyles = makeStyles({
 
 function MainGrid(props) {
   const classes = useStyles();
-  const [items, setItems] = useState([0]);
+  const [items, setItems] = useState([]);
 
   async function getItems() {
-    let items_ = null;
-    let response = await fetch("./data.json");
-    items_ = await response.json();
-    alert(items_["products"]);
-    alert(items_["products"].length);
-    setItems(items_["products"]);
+    const response = await fetch("./data.json");
+    const data = await response.json();
+    setItems(data["products"]);
+
+    props.itemsToStore(data["products"]);
+
+    const numbers = new Array(data["products"].length) /* каждый элемент массива numbers - кол-во 
+                                                       определенного  товара в корзине */
+    for (let i = 0; i < numbers.length; ++i) {
+      numbers[i] = 1; // при добавлении в корзину кол-во = 1
+    }
+
+    props.setNumbers(numbers);
   }
 
   useEffect( () => {
@@ -53,4 +60,13 @@ const mapStateToProps = function(state) {
     items: state.items,
   }
 }
-export default connect(mapStateToProps)(MainGrid);
+export default connect(mapStateToProps,
+  dispatch => ({
+    itemsToStore: (items) => {
+      dispatch({ type: "ITEMS", value: items});
+    },
+    setNumbers: (numbers) => {
+      dispatch({ type: "SET_NUMBERS", value: numbers});
+    },
+  })
+)(MainGrid);

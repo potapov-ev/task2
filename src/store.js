@@ -2,26 +2,21 @@ import {createStore} from "redux";
 import { persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage" 
 
-import items from "./constants";
+//import items from "./constants";
 
-
-const numbers = new Array(items.length) /* каждый элемент массива - кол-во 
-                                         определенного  товара в корзине */
-for (let i = 0; i < numbers.length; ++i) {
-  numbers[i] = 1;
-}
 
 const initialState = {
-  items: items,
+  items: [],
   itemsId: [], // id товаров, находящихся в корзине
   price: 0,
-  numbers: numbers,
+  numbers: [],
 };
 
 const ITEMS = "ITEMS";
 const ITEM_TO_CART = "ITEM_TO_CART";
 const DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART";
 const CHANGE_PRICE = "CHANGE_PRICE";
+const SET_NUMBERS = "SET_NUMBERS";
 const CHANGE_NUMBER = "CHANGE_NUMBER"; // Изменить кол-во товара в корзине
 
 function reducer(state = initialState, action) {
@@ -39,6 +34,9 @@ function reducer(state = initialState, action) {
 
     case CHANGE_PRICE:  
       return {...state, price: state.price + parseFloat(action.value)};
+
+    case SET_NUMBERS:
+      return {...state, numbers: action.value};
 
     case CHANGE_NUMBER:  // action.value - индекс
       return {...state, numbers: state.numbers.map( (number, index) => {
@@ -60,5 +58,5 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-export let store = createStore(persistedReducer);
-export let persistor = persistStore(store);
+export const store = createStore(persistedReducer);
+export const persistor = persistStore(store);

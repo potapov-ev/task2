@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemInCart from "./ItemInCart";
 import {connect} from "react-redux";
 
@@ -75,12 +75,6 @@ const useStyles = makeStyles({
 function Cart(props) {
   const classes = useStyles();
 
-  const [needRender, setNeedRender] = useState(false); // Используется в ItemInCart
-
-  const setRender = function() {
-    setNeedRender(!needRender);
-  }
-
   return (
     <div className={classes.cart}>
       <div className={classes["cart-shopping-list"]}>
@@ -89,7 +83,6 @@ function Cart(props) {
           props.itemsId.map( (id) =>
             <ItemInCart 
               id = {id}
-              needRender={setRender} // убрать
             /> 
           )
         }
