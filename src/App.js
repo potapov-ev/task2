@@ -1,7 +1,11 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {BrowserRouter, Route } from "react-router-dom";
 import {Provider} from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
+
+import {store, persistor} from "./store";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 import Head from "./components/pages/Head";
 import Navigation from "./components/pages/Navigation";
@@ -10,16 +14,6 @@ import MainGrid from "./components/pages/MainGrid";
 import Footer from "./components/pages/Footer";
 import Cart from "./components/pages/Cart";
 
-import {store, persistor} from "./store";
-
-import { makeStyles } from "@material-ui/core/styles";
-
-//let a = process.env.PUBLIC_URL;
-fetch("./data.json")
-.then((r) => r.json())
-.then((data) =>{
-    alert(data);
-})
 
 /* Глобальные стили задаются в этом файле, во всех остальных файлах стили для 
   конкретных компонентов, т е в них не обязательно добавлять "@global" на верхний уровень объекта? */
@@ -39,7 +33,6 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-
 
   return (
     <Provider store={store}> 

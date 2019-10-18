@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage"
 
 import items from "./constants";
 
+
 const numbers = new Array(items.length) /* каждый элемент массива - кол-во 
                                          определенного  товара в корзине */
 for (let i = 0; i < numbers.length; ++i) {

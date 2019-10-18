@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {connect} from "react-redux";
 
 import Item from "./Item";
@@ -17,10 +17,24 @@ const useStyles = makeStyles({
 
 function MainGrid(props) {
   const classes = useStyles();
+  const [items, setItems] = useState([0]);
+
+  async function getItems() {
+    let items_ = null;
+    let response = await fetch("./data.json");
+    items_ = await response.json();
+    alert(items_["products"]);
+    alert(items_["products"].length);
+    setItems(items_["products"]);
+  }
+
+  useEffect( () => {
+    getItems();
+  }, [])
 
   return (
     <div className={classes["main-grid"]}>
-      { props.items.map( (item) =>
+      { items.map( (item) =>
         <Item 
           src={item.img}
           model={item.model}
