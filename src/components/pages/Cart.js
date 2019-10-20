@@ -1,73 +1,75 @@
-import React from "react";
-import ItemInCart from "./ItemInCart";
-import {connect} from "react-redux";
+import React, { useState } from 'react';
+import ItemInCart from './ItemInCart';
+import {connect} from 'react-redux';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({ 
   cart: {
-    width: "100%",
-    display: "flex",
-  },
-  "cart-shopping-list": {
-    width: "60%",
-  },
-  "cart-shopping-list__title": {
-    marginLeft: "8%",
-  },
-  "cart-formalization": {
-    margin: "34px 0px",
-    marginLeft: "2%",
-    width: "28%",
-    height: "400px",
+    width: '100%',
+    display: 'flex',
 
-    color: "white",
+    fontFamily: 'Roboto, sans-serif',
+  },
+  'cart-shopping-list': {
+    width: '60%',
+  },
+  'cart-shopping-list__title': {
+    marginLeft: '8%',
+  },
+  'cart-formalization': {
+    margin: '34px 0px',
+    marginLeft: '2%',
+    width: '28%',
+    height: '400px',
 
-    backgroundColor: "rgb(17, 17, 17)",
+    color: 'white',
 
-    "& > div": {
-      marginLeft: "5%",
-      marginTop: "4%", // !!!
+    backgroundColor: 'rgb(17, 17, 17)',
+
+    '& > div': {
+      marginLeft: '5%',
+      marginTop: '4%', // !!!
     },
-    "& div:last-of-type": {
-      marginTop: "30px",
-      marginBottom: "30px",
+    '& div:last-of-type': {
+      marginTop: '30px',
+      marginBottom: '30px',
     },
-    "& > button": {
-      display: "block",
-      width: "86%",
-      height: "40px",
-      margin: "20px auto",
-      borderRadius: "3px",
+    '& > button': {
+      display: 'block',
+      width: '86%',
+      height: '40px',
+      margin: '20px auto',
+      borderRadius: '3px',
 
-      color: "white",
-      textAlign: "center",
+      color: 'white',
+      textAlign: 'center',
       
-      border: "none",
-      outline: "none",
+      border: 'none',
+      outline: 'none',
 
-      backgroundColor: "rgb(250, 84, 0)",
+      backgroundColor: 'rgb(250, 84, 0)',
 
-      "&:hover": {
-        cursor: "pointer",
+      '&:hover': {
+        cursor: 'pointer',
 
-        backgroundColor: "#F4A460",
+        backgroundColor: '#F4A460',
       },
-      "& > span": {
-        width: "10px",
+      '& > span': {
+        width: '10px',
       }
     },
-    "& > button:last-of-type": {
-      backgroundColor: "white",
+    '& > button:last-of-type': {
+      backgroundColor: 'white',
 
-      "&:hover": {
-        backgroundColor: "white",
+      '&:hover': {
+        backgroundColor: 'white',
       },
     },
   },
-  "cart-formalization__info": {
-    display: "inline-block",
-    width: "74%",
+  'cart-formalization__info': {
+    display: 'inline-block',
+    width: '74%',
   },
   
 });  
@@ -75,24 +77,31 @@ const useStyles = makeStyles({
 function Cart(props) {
   const classes = useStyles();
 
+  const [needRender, setNeedRender] = useState(false); // Используется в ItemInCart
+
+  const setRender = function() {
+    setNeedRender(!needRender);
+  }
+
   return (
     <div className={classes.cart}>
-      <div className={classes["cart-shopping-list"]}>
-        <h3 className={classes["cart-shopping-list__title"]}>КОРЗИНА</h3>
+      <div className={classes['cart-shopping-list']}>
+        <h3 className={classes['cart-shopping-list__title']}>КОРЗИНА</h3>
         {
           props.itemsId.map( (id) =>
             <ItemInCart 
               id = {id}
+              needRender={setRender} // убрать
             /> 
           )
         }
       </div>
-        <div className={classes["cart-formalization"]}>
+        <div className={classes['cart-formalization']}>
           <div>
             СВЕДЕНИЯ
           </div>
           <div>
-            <span className={classes["cart-formalization__info"]}>
+            <span className={classes['cart-formalization__info']}>
               Промежуточный итог
             </span>
             <span>
@@ -100,13 +109,13 @@ function Cart(props) {
             </span>
           </div>
           <div>
-            <span className={classes["cart-formalization__info"]}>
+            <span className={classes['cart-formalization__info']}>
               Предполагаемая стоимость доставки и обработки
             </span>
             <span>350</span>
           </div>
           <div>
-            <span className={classes["cart-formalization__info"]}>
+            <span className={classes['cart-formalization__info']}>
               ВСЕГО
             </span>
             <span>

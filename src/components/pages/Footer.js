@@ -1,74 +1,76 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
   footer: {
-    clear: "both",
-    width: "100%",
+    clear: 'both', // !!!!!
+    width: '100%',
+    
+    fontFamily: 'Roboto, sans-serif', // !!!!!
 
-    backgroundColor: "rgb(17, 17, 17)",
+    backgroundColor: 'rgb(17, 17, 17)',
   },
-  "footer-top": {
-    display: "flex",
+  'footer-top': {
+    display: 'flex',
 
-    "& > div": {
-      width: "15%",
-      marginLeft: "3%",
-      marginTop: "30px",
-      marginBottom: "10px",
+    '& > div': {
+      width: '15%',
+      marginLeft: '3%',
+      marginTop: '30px',
+      marginBottom: '10px',
     },
-    "& p": {
-      marginTop: "12px",
+    '& p': {
+      marginTop: '12px',
     },
-    "& a": {
-      fontSize: "14px",
-      textDecoration: "none",
-      color: "white",
+    '& a': {
+      fontSize: '14px',
+      textDecoration: 'none',
+      color: 'white',
     },
-    "& .footer-top__info": {
-      display: "block",
-      marginTop: "10px",
+    '& .footer-top__info': {
+      display: 'block',
+      marginTop: '10px',
 
-      color: "gray",
+      color: 'gray',
 
-      "&:hover": {
-        color: "white",
+      '&:hover': {
+        color: 'white',
       },
     },
   },
-  "footer-bottom": {
-    display: "flex",
-    margin: "0px 3%",
+  'footer-bottom': {
+    display: 'flex',
+    margin: '0px 3%',
     
-    color: "gray",
-    fontSize: "10px",
+    color: 'gray',
+    fontSize: '10px',
     
-    borderTop: "1px groove gray",
+    borderTop: '1px groove gray',
 
-    "& > div": {
-      marginTop: "10px",
+    '& > div': {
+      marginTop: '10px',
     },
-    "& .footer-bottom__map": {
-      color: "white",
-      marginBottom: "10px",
-      position: "relative",
-      marginLeft: "14px",
+    '& .footer-bottom__map': {
+      color: 'white',
+      marginBottom: '10px',
+      position: 'relative',
+      marginLeft: '14px',
     },
-    "& .footer-bottom__description": {
-      marginLeft: "20px",
+    '& .footer-bottom__description': {
+      marginLeft: '20px',
     },
-    "& > p:nth-of-type(1)": {
-      marginLeft: "40%",
+    '& > p:nth-of-type(1)': {
+      marginLeft: '40%',
     },
-    "& a": {
-      textDecoration: "none",
-      color: "gray",
+    '& a': {
+      textDecoration: 'none',
+      color: 'gray',
 
-      "&:hover": {
-        color: "white",
+      '&:hover': {
+        color: 'white',
       },
     },
   },

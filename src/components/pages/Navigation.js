@@ -1,31 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
-	"main-navigation": {
-		float: "left",
-  	width: "20%",
+	'main-navigation': {
+		float: 'left',
+  	width: '20%',
+
+		fontFamily: 'Roboto, sans-serif', //!! убрать
 		
-		"& > div": {
-			width: "50%",
-			marginLeft: "20%",
-			marginTop: "10px",
+		'& > div': {
+			width: '50%',
+			marginLeft: '20%',
+			marginTop: '10px',
 
-			fontSize: "18px",
+			fontSize: '18px',
 		},
-		"& a": {
-			textDecoration: "none",
-			color: "black",
+		'& a': {
+			textDecoration: 'none',
+			color: 'black',
 
-			"&:hover": {
-				color: "gray",
+			'&:hover': {
+				color: 'gray',
 			},
 		},
-		"& span": {
-			color: "gray",
+		'& span': {
+			color: 'gray',
 		},
 	},
 })

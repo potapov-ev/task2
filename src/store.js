@@ -1,9 +1,10 @@
-import {createStore} from "redux";
-import { persistStore, persistReducer } from "redux-persist"
-import storage from "redux-persist/lib/storage" 
+import {createStore, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+//import { AsyncStorage } from "react-native";
 
 //import items from "./constants";
-
 
 const initialState = {
   items: [],
@@ -12,16 +13,14 @@ const initialState = {
   numbers: [],
 };
 
-const ITEMS = "ITEMS";
+const ADD_ITEMS = "ADD_ITEMS";
 const ITEM_TO_CART = "ITEM_TO_CART";
 const DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART";
 const CHANGE_PRICE = "CHANGE_PRICE";
-const SET_NUMBERS = "SET_NUMBERS";
-const CHANGE_NUMBER = "CHANGE_NUMBER"; // Изменить кол-во товара в корзине
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case ITEMS:
+    case ADD_ITEMS:
       return { ...state, items: action.value };
 
     case ITEM_TO_CART:
@@ -34,17 +33,6 @@ function reducer(state = initialState, action) {
 
     case CHANGE_PRICE:  
       return {...state, price: state.price + parseFloat(action.value)};
-
-    case SET_NUMBERS:
-      return {...state, numbers: action.value};
-
-    case CHANGE_NUMBER:  // action.value - индекс
-      return {...state, numbers: state.numbers.map( (number, index) => {
-        if (action.value[1] === index) {
-          return action.value[0];
-        }
-        return number;
-      })};
           
     default:
       return state;
@@ -58,5 +46,5 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-export const store = createStore(persistedReducer);
+export const store = createStore(persistedReducer, applyMiddleware(thunk));
 export const persistor = persistStore(store);
