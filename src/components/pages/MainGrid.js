@@ -6,7 +6,6 @@ import Item from './Item';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { itemsFetchData } from "../action"
-//import items from "../../constants";
 
 
 const useStyles = makeStyles({
@@ -48,7 +47,9 @@ const mapStateToProps = (state) => {
   }
 };
 const mapDispatchToProps = (dispatch) => ({
-  fetchData: (url) => {
+  fetchData: (url) => { 
+    /* Т е при получении объекта в асинхронной функции нужно использовать
+      Redux Thunk middleware и передавать в dispatch эту функцию, а не стандартный action? */
     dispatch(itemsFetchData(url));
   },
   setNumbers: (numbers) => {

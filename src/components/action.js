@@ -1,6 +1,6 @@
 import axios from "axios";
 
-/* return {
+/* return { !!! доделать
   loading: true,
   error: null,
   items: data["products"],
@@ -14,12 +14,5 @@ export function itemsFetchData(url) {
     } catch (exception) {
       alert(exception.message);
     }
-  };
-}
-
-
-export function byItem(id) {
-  return async (dispatch) => {
-    dispatch({type: "ITEM_TO_CART", value: id});
   };
 }
