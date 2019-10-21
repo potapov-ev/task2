@@ -1,18 +1,18 @@
-import React from 'react';
-import {BrowserRouter, Route } from 'react-router-dom';
-import {Provider} from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
+import React from "react";
+import {BrowserRouter, Route } from "react-router-dom";
+import {Provider} from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-import Head from './components/pages/Head';
-import Navigation from './components/pages/Navigation';
-import MainHeader from './components/pages/MainHeader';
-import MainGrid from './components/pages/MainGrid';
-import Footer from './components/pages/Footer';
-import Cart from './components/pages/Cart';
+import Head from "./components/Head/Head";
+import Navigation from "./components/Navigation/Navigation";
+import MainHeader from "./components/MainHeader/MainHeader";
+import MainGrid from "./components/MainGrid/MainGrid";
+import Footer from "./components/Footer/Footer";
+import Cart from "./components/Cart/Cart";
 
-import {store, persistor} from './store';
+import {store, persistor} from "./store/store";
 
 
 /* Я задаю глобальные стили в этом компоненте, во всех других компонентах 
@@ -23,6 +23,8 @@ const useStyles = makeStyles({
     body: {
       padding: "0px",
       margin: "0px",
+
+      fontFamily: "Roboto, sans-serif",
     },
     "*": {
       boxSizing: "border-box",
