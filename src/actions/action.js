@@ -7,7 +7,6 @@ export function itemsFetchData(url) {
     if(getState().fetchItems.loading === false) { 
       return;
     }
-    alert(1);
     const loading = false;
     try {
       const { data } = await axios.get(url);
