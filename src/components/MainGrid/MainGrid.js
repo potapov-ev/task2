@@ -45,8 +45,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   fetchData: (url) => { 
-    /* Т е при получении объекта в асинхронной функции нужно всегда использовать
-      Redux Thunk middleware и передавать в dispatch эту функцию, а не объект action? */
     dispatch(itemsFetchData(url));
   },
   setNumbers: (numbers) => {

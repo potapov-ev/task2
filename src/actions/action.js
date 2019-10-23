@@ -23,3 +23,29 @@ export function itemsFetchData(url) {
     }
   };
 }
+
+export function userFetchData(url, login, password) {
+  return async (dispatch) => {
+    const loading = false;
+    try {
+      const { data } = await axios.get(url);
+      const users = data["users"];
+      let user = {};
+
+      for (let user_ of users) {
+        if (user_.login === login && user_.password === password) {
+          user = user_;
+        }
+        else {
+          return;
+        }
+      }
+
+      document.location.href = "/Admin";
+      /* Предполагается, что jwt создается в бэкенде? */
+      dispatch({type: "FIND_USER", value: {loading, error: null, userData: {login: login, jwt: user.jwt} }});
+    } catch (exception) {
+      dispatch({type: "FIND_USER", value: {loading, error: exception.message, userData: {} }});
+    }
+  }
+}

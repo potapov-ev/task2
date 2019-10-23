@@ -21,5 +21,12 @@
       "category": "Мужская обувь",
       "id": "13"
     }
+  ],
+  "users": [
+    {
+      "login": "admin",
+      "password": "admin",
+      "JWT": "eyJ0eXAiOiJKV1QiLGcizI1NiJ.eyJ1c2ySWQiOiMZi0zNWRhLTQ4ZjIOZhYi1jZWYzOTA0NjYwYmQif.-xN_h82PHrcxH-x5mb11y1537t3rGzc"
+    }
   ]
 }

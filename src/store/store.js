@@ -13,6 +13,11 @@ const initialState = {
   itemsId: [], // id товаров, находящихся в корзине
   price: 0, // суммарная цена за все товары в корзине
   numbers: [], // Кол-во единиц одного товара в корзине
+  fetchUserData: {
+    loading: true,
+    error: null,
+    userData: {},
+  }
 };
 
 const FETCH_ITEMS = "FETCH_ITEMS";
@@ -21,6 +26,7 @@ const DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART";
 const CHANGE_PRICE = "CHANGE_PRICE";
 const SET_NUMBERS = "SET_NUMBERS";
 const CHANGE_NUMBER = "CHANGE_NUMBER";
+const FIND_USER = "FIND_USER";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -51,6 +57,9 @@ function reducer(state = initialState, action) {
       })
       return {...state, numbers: temp};
           
+    case FIND_USER:
+      return {...state, fetchUserData: action.value};
+
     default:
       return state;
   }
