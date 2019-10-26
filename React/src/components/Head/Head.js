@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */    // href="#"
 import React, {useState} from "react";
 import {Link} from "react-router-dom"
-import {connect} from "react-redux";
 
 import jordanIcon from "./img/icons/air_jordan_icon.svg";
 import shopIcon from "./img/icons/shopping_cart_icon.svg";
@@ -275,11 +274,9 @@ function Head(props) {
           <a href="#">Hurley</a>
         </div>		
         <div className={classes["header-top-signIn"]}>
-          { props.userData.login ? <a>{props.userData.login}</a> :
           <a href="#"  onClick={handleModalWindowOpen}>
             Присоединиться / Войти
           </a>
-          }
         </div>
        <Modal
           className={classes["header-top-modal"]}
@@ -367,10 +364,4 @@ function Head(props) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.fetchUserData.userData,
-  }
-};
-
-export default connect(mapStateToProps)(Head);
+export default Head;
