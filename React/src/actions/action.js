@@ -5,7 +5,7 @@ export function itemsGetData(url) {
   return async (dispatch, getState) => {
     if(getState().fetchItems.loading === false) { 
       return;
-    }  
+    }   
 
     const loading = false;
     try {
