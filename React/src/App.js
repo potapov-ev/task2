@@ -1,5 +1,4 @@
 import React from "react";
-import {connect} from "react-redux";
 import {BrowserRouter, Route } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,9 +42,5 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userData: state.fetchUserData.userData,
-  }
-};
-export default connect(mapStateToProps)(App); 
+
+export default (App); 
