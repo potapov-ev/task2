@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
 import Item from "./Item/Item";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { itemsGetData } from "../../actions/action"
+import { itemsGetData } from "../../Redux/actions/action";
+import { object } from "prop-types";
 
 
 const useStyles = makeStyles({
@@ -20,7 +21,10 @@ const useStyles = makeStyles({
 function MainGrid(props) {
   const classes = useStyles();
 
-  props.getData("products");
+  useEffect( () => {
+    props.getData("products");
+  })
+  
   return (
     <div className={classes["main-grid"]}>
       { props.items.map( (item) =>
@@ -38,8 +42,14 @@ function MainGrid(props) {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    items: state.fetchItems.items,
+  if (state.fetchItems) {
+    return {
+      items: state.fetchItems.items,
+    }
+  } else {
+    return {
+      items: []
+    }
   }
 };
 

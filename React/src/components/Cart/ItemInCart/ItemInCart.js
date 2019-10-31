@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useState, useCallback} from "react";
 import {connect} from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,6 +64,7 @@ const useStyles = makeStyles({
   },
 })
 
+
 function ItemInCart(props) {
   const classes = useStyles();
 
@@ -80,28 +81,30 @@ function ItemInCart(props) {
     })
     return counter;
   }
-  let index = getIndex();
-  
+  const index = getIndex();
+  const item = props.items[index];
+  const number = props.numbers[item.id]; // Кол-во данного товара в корзине
+
   const handleItemRemove = useCallback( () => {
     let coef = 1;
-    if (props.numbers[index] > 1) {
-      coef = props.numbers[index];
+    if (number && number > 1) {
+      coef = number;
     }
-
-    props.changePrice(parseFloat(-props.items[index].price * coef));
-    props.changeNumber(1, index);
+    
+    props.changePrice(parseFloat(- item.price * coef));
+    props.changeNumber(1, item.id);
     props.deleteItem(props.id); 
   }, [props, index]);
 
   function handleNumberIncrease() {
-    props.changeNumber(props.numbers[index] + 1, index);
-    props.changePrice(parseFloat(props.items[index].price)); //parseFloat не нужен !!!!!! или нужен
+    props.changeNumber(number ? number + 1 : 2, item.id);
+    props.changePrice(parseFloat(item.price));
   }
-
+  
   function handleNumberDecrease() {
-    if(props.numbers[index] > 1) {
-      props.changeNumber(props.numbers[index] - 1, index);
-      props.changePrice(parseFloat(-props.items[index].price));
+    if (number && number > 1) {
+      props.changeNumber(number - 1, item.id);
+      props.changePrice(parseFloat(- item.price));
     }
   }
 
@@ -109,19 +112,19 @@ function ItemInCart(props) {
     <div className={classes["cart-shoppingList-item"]}>
       <div>
         <div className={classes["cart-shoppingList-item__img"]}>
-          <img src={props.items[index].src} alt="item" />
+          <img src={item.src} alt="item" />
         </div>
         <div className={classes["cart-shoppingList-item-info"]}> 
           <div>
             <span className={classes["cart-shoppingList-item-info__model"]}>
-              {props.items[index].model}
+              {item.model}
             </span>
             <span className={classes["cart-shoppingList-item-info__price"]}>
-              {props.items[index].price}
+              {item.price}
             </span>
           </div>
           <div>
-            {props.items[index].category}
+            {item.category}
           </div>
           <div className={classes["cart-shoppingList-item-info-btns"]}>
             <div className={classes["cart-shoppingList-item-info-btns__delete"]}>
@@ -134,7 +137,7 @@ function ItemInCart(props) {
                 <AddIcon />
               </Button>
               <span>
-                {props.numbers[index]}
+                {number || 1}
               </span>
               <Button onClick={handleNumberDecrease}>
                 <RemoveIcon />
@@ -150,20 +153,20 @@ function ItemInCart(props) {
 const mapStateToProps = function(state) { 
   return {
     items: state.fetchItems.items,
-    numbers: state.numbers, // получить конкретный номер здесь, а не все
+    numbers: state.numbers,
   }
 }
 
 export default connect(mapStateToProps, 
   dispatch => ({
-    deleteItem: (item) => {
-      dispatch({ type: "DELETE_ITEM_FROM_CART", value: item});
+    deleteItem: (id) => {
+      dispatch({ type: "DELETE_ITEM_FROM_CART", value: id });
     },
     changePrice: (price) => {
       dispatch({ type: "CHANGE_PRICE", value: price});
     },
-    changeNumber: (number, index) => {
-      dispatch({ type: "CHANGE_NUMBER", value: {number, index}});
+    changeNumber: (number, id) => {
+      dispatch({ type: "CHANGE_NUMBER", value: {number, id}});
     }
   })
 )(ItemInCart);
