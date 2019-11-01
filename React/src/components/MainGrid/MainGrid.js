@@ -6,7 +6,6 @@ import Item from "./Item/Item";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { itemsGetData } from "../../Redux/actions/action";
-import { object } from "prop-types";
 
 
 const useStyles = makeStyles({
@@ -42,9 +41,9 @@ function MainGrid(props) {
 }
 
 const mapStateToProps = (state) => {
-  if (state.fetchItems) {
+  if (state.itemsReducer) {
     return {
-      items: state.fetchItems.items,
+      items: state.itemsReducer.fetchItems.items,
     }
   } else {
     return {

@@ -96,14 +96,14 @@ function Item(props) {
  
 const mapStateToProps = (state) => { 
   return {
-    itemsId: state.itemsId,
+    itemsId: state.cartReducer.itemsId,
   }
 }
 
 export default connect(mapStateToProps,
   dispatch => ({
     buyItem: (id) => {
-      dispatch({type: "ITEM_TO_CART", value: id}); // заменить на const
+      dispatch({type: "ITEM_TO_CART", value: id});
     },
     increaseСost: (price) => {
       dispatch({ type: "CHANGE_PRICE", value: price});

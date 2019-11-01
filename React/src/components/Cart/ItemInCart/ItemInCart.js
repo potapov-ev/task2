@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, { useCallback} from "react";
 import {connect} from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,7 +64,6 @@ const useStyles = makeStyles({
   },
 })
 
-
 function ItemInCart(props) {
   const classes = useStyles();
 
@@ -94,7 +93,7 @@ function ItemInCart(props) {
     props.changePrice(parseFloat(- item.price * coef));
     props.changeNumber(1, item.id);
     props.deleteItem(props.id); 
-  }, [props, index]);
+  }, [props, item, number]);
 
   function handleNumberIncrease() {
     props.changeNumber(number ? number + 1 : 2, item.id);
@@ -152,8 +151,8 @@ function ItemInCart(props) {
 
 const mapStateToProps = function(state) { 
   return {
-    items: state.fetchItems.items,
-    numbers: state.numbers,
+    items: state.itemsReducer.fetchItems.items,
+    numbers: state.cartReducer.numbers,
   }
 }
 

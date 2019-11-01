@@ -132,8 +132,8 @@ function Cart(props) {
 }
 const mapStateToProps = function(state) { 
   return {
-    itemsId: state.itemsId,
-    temporaryPrice: state.price,
+    itemsId: state.cartReducer.itemsId,
+    temporaryPrice: state.cartReducer.price,
   }
 }
 export default connect(mapStateToProps)(Cart);
