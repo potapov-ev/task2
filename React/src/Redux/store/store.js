@@ -11,6 +11,7 @@ const persistConfig = {
   key: "root",
   storage,
 }
+
 const rootReducer = {itemsReducer, cartReducer};
 const persistedCombinedReducer = persistCombineReducers(persistConfig, rootReducer);
 

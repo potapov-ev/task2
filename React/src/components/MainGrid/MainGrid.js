@@ -21,8 +21,13 @@ function MainGrid(props) {
   const classes = useStyles();
 
   useEffect( () => {
-    props.getData("products");
-  })
+    setInterval( () => {
+      props.getData("products");
+    }, 1000);
+    //useEffect должна запускаться 1 раз
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
   
   return (
     <div className={classes["main-grid"]}>

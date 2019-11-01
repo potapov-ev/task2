@@ -3,7 +3,7 @@ const initialState = {
     loading: true,
     error: null,
     items: [],
-  },
+  }
 };
 
 const FETCH_ITEMS = "FETCH_ITEMS";
