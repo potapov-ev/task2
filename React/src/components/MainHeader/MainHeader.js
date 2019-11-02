@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 })
 
-function MainHeader() {  
+const MainHeader = () => {  
   const classes = useStyles();
 
   return (

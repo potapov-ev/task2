@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "categories",
+  "info": {
+    "name": "categories",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "href": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    }
+  }
+}

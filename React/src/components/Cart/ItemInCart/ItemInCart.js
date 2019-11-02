@@ -64,12 +64,12 @@ const useStyles = makeStyles({
   },
 })
 
-function ItemInCart(props) {
+const ItemInCart = props => {
   const classes = useStyles();
 
   /* Через пропсы передается только id товара, вся информация о товаре 
     берется из store, функция ищет индекс товара в store по id */
-  function getIndex()  {
+    const getIndex = () => {
     let counter = 0;
 
     props.items.map( (item, index) => { 
@@ -100,7 +100,7 @@ function ItemInCart(props) {
     props.changePrice(parseFloat(item.price));
   }
   
-  function handleNumberDecrease() {
+  const handleNumberDecrease = () => {
     if (number && number > 1) {
       props.changeNumber(number - 1, item.id);
       props.changePrice(parseFloat(- item.price));
@@ -149,23 +149,27 @@ function ItemInCart(props) {
   )
 }
 
-const mapStateToProps = function(state) { 
+const mapStateToProps = (state) => { 
   return {
-    items: state.itemsReducer.fetchItems.items,
+    items: state.itemsReducer.items,
     numbers: state.cartReducer.numbers,
   }
 }
 
+const DELETE_ITEM_FROM_CART = "DELETE_ITEM_FROM_CART";
+const CHANGE_PRICE = "CHANGE_PRICE";
+const CHANGE_NUMBER = "CHANGE_NUMBER";
+
 export default connect(mapStateToProps, 
   dispatch => ({
     deleteItem: (id) => {
-      dispatch({ type: "DELETE_ITEM_FROM_CART", value: id });
+      dispatch({ type: DELETE_ITEM_FROM_CART, value: id });
     },
     changePrice: (price) => {
-      dispatch({ type: "CHANGE_PRICE", value: price});
+      dispatch({ type: CHANGE_PRICE, value: price});
     },
     changeNumber: (number, id) => {
-      dispatch({ type: "CHANGE_NUMBER", value: {number, id}});
+      dispatch({ type: CHANGE_NUMBER, value: {number, id}});
     }
   })
 )(ItemInCart);

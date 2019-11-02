@@ -229,32 +229,36 @@ const useStyles = makeStyles( theme => ({
   },
 }))
 
-function Head(props) {
+const LOGIN = "admin";
+const PASSWORD = "000000gtd";
+const ADMIN_PANEL_URL = "http://localhost:1337/admin/"
+
+const Head = props => {
   const classes = useStyles();
   const [open, setOpen] = useState(false); // Закрыть, открыть всплывающее окно
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState(""); 
   const [isError, setIsError] = useState(false);
 
-  function handleModalWindowOpen() {
+  const handleModalWindowOpen = () => {
     setOpen(true);
   }
-  function handleModalWindowClose() {
+  const handleModalWindowClose = () => {
     setOpen(false);
   }
-  function getLogin(event) {
+  const getLogin =event => {
     setLogin(event.target.value);
   }
-  function getPassword(event) {
+  const getPassword = event => {
     setPassword(event.target.value);
   }
 
 
-  function handleFormSubmit(event) {
+  const handleFormSubmit = event => {
     event.preventDefault();
-    if (login === "admin" && password === "000000gtd") {
+    if (login === LOGIN && password === PASSWORD) {
       setOpen(false);
-      document.location.href = "http://localhost:1337/admin/";
+      document.location.href = ADMIN_PANEL_URL;
       setIsError(false);
     } else {
       setIsError(true);

@@ -73,7 +73,7 @@ const useStyles = makeStyles({
   
 });  
 
-function Cart(props) {
+const Cart = props => {
   const classes = useStyles();
 
   return (
@@ -130,7 +130,7 @@ function Cart(props) {
     </div>
   )
 }
-const mapStateToProps = function(state) { 
+const mapStateToProps = state => { 
   return {
     itemsId: state.cartReducer.itemsId,
     temporaryPrice: state.cartReducer.price,

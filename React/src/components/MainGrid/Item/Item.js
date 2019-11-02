@@ -57,7 +57,7 @@ const useStyles = makeStyles({
   },
 })
 
-function Item(props) {
+const Item = props => {
   const classes_ = useStyles();
 
   const addItem = useCallback ( () => {
@@ -94,7 +94,7 @@ function Item(props) {
   )
 }
  
-const mapStateToProps = (state) => { 
+const mapStateToProps = state => { 
   return {
     itemsId: state.cartReducer.itemsId,
   }

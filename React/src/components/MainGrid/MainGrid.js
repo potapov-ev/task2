@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {connect} from "react-redux";
 
 import Item from "./Item/Item";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { itemsGetData } from "../../Redux/actions/action";
+import { fetchProducts } from "../../Redux/actions/actions";
 
 
 const useStyles = makeStyles({
@@ -17,17 +17,15 @@ const useStyles = makeStyles({
   }
 })
 
-function MainGrid(props) {
+const PRODUCTS_URL = "products";
+const MainGrid = props => {
   const classes = useStyles();
 
   useEffect( () => {
-    setInterval( () => {
-      props.getData("products");
-    }, 1000);
-    //useEffect должна запускаться 1 раз
+    props.fetchProductsFrom(PRODUCTS_URL);
+    // useEffect должна запускаться 1 раз
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
   
   return (
     <div className={classes["main-grid"]}>
@@ -45,10 +43,10 @@ function MainGrid(props) {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   if (state.itemsReducer) {
     return {
-      items: state.itemsReducer.fetchItems.items,
+      items: state.itemsReducer.items,
     }
   } else {
     return {
@@ -57,12 +55,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getData: (url) => { 
-    dispatch(itemsGetData(url));
-  },
-  setNumbers: (numbers) => {
-    dispatch({ type: "ADD_ITEMS", value: numbers});
+const mapDispatchToProps = dispatch => ({
+  fetchProductsFrom: (url) => { 
+    dispatch(fetchProducts(url));
   },
 });
 
